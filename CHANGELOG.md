@@ -4,6 +4,27 @@ All notable changes to Remittance PDF Splitter are documented here.
 
 ---
 
+## [1.4.0] – 2026-04-10
+
+### Added
+
+- **Multi-file support** — select multiple PDFs at once via Browse or drag-and-drop from File Explorer
+- **Drag-and-drop** — drop PDF files directly onto the application window to start processing
+- **Concurrent processing** — up to 5 files process in parallel, with queuing for additional files
+- **Animated progress spinners** — long-running steps (page extraction, OCR) show a live animated indicator instead of static text
+- **Consecutive yellow cover pages** — multiple consecutive yellow pages are now grouped into a single remittance section; filenames concatenate all dates and amounts from each cover
+
+### Changed
+
+- "Split Remittances" button replaced with "Browse & Split" (multi-select, auto-processes)
+- File entry field removed — files are processed immediately on selection or drop
+
+### Dependencies
+
+- Added `windnd` for drag-and-drop support on Windows
+
+---
+
 ## [1.3.0] – 2026-03-12
 
 ### Added
@@ -20,6 +41,10 @@ All notable changes to Remittance PDF Splitter are documented here.
 - **Output filenames no longer contain ABN numbers** — ABN lines are skipped when searching for the vendor name
 - **Date OCR correction** — OCR misreads of `1` as `4` in the day/month field (e.g. `42/02/26` → `12/02/26`) are automatically corrected, preventing invalid date strings like `20260242` in filenames
 - **First-run pip bootstrap** — new virtual environments now always include pip, preventing `No module named pip` errors on first launch
+
+### Added
+
+- 36 automated unit tests covering filename generation and metadata extraction (no Tesseract required to run)
 
 ---
 
